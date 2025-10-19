@@ -1,0 +1,117 @@
+:root{
+  --bg1:#ffdee9;
+  --bg2:#b5fffc;
+  --primary:#E91E63;
+  --accent:#7C4DFF;
+  --ink:#263238;
+  --white:#ffffff;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color: var(--ink);
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  display:grid; place-items:center;
+  overflow:hidden;
+}
+.wrap{ position:relative; width:min(680px,92vw); }
+.card{
+  background: rgba(255,255,255,0.9);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.12);
+  padding: clamp(20px, 4vw, 36px);
+  text-align:center;
+  backdrop-filter: blur(6px);
+  transition: transform .5s ease, box-shadow .5s ease;
+}
+.card:hover{ transform: translateY(-2px); box-shadow: 0 24px 70px rgba(0,0,0,.14); }
+.cta{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 20px; border-radius: 999px; border:none; cursor:pointer;
+  background: radial-gradient(120% 120% at 20% 20%, var(--primary), var(--accent));
+  color:var(--white); font-weight:700; font-size: clamp(16px,2.8vw,18px);
+  box-shadow: 0 10px 24px rgba(233,30,99,.35);
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+.cta:active{ transform: translateY(1px) scale(.995); box-shadow: 0 6px 18px rgba(233,30,99,.28); }
+h1{ margin: 6px 0 10px; font-size: clamp(28px,6vw,40px); line-height:1.15; }
+p{ margin: 0.4rem 0; font-size: clamp(15px,3.6vw,18px); opacity:.9 }
+.badge{
+  display:inline-block; padding:6px 12px; border-radius:999px;
+  background: rgba(124,77,255,.1); color:var(--accent); font-weight:700; font-size: .95rem;
+}
+.hidden{ display:none !important; }
+.big-title{
+  font-size: clamp(36px,8.5vw,56px);
+  color: var(--primary);
+  text-shadow: 0 8px 24px rgba(233,30,99,.25);
+  margin: 0 0 10px;
+}
+.sub{ font-size: clamp(16px,3.8vw,20px); opacity:.9 }
+#confetti{
+  position:fixed; inset:0; pointer-events:none; z-index: 20;
+}
+.hearts{ position: fixed; inset: 0; pointer-events:none; overflow:hidden; z-index: 10; }
+.heart{
+  position:absolute; bottom:-40px; font-size: 18px; opacity:.9;
+  animation: floatUp linear forwards;
+  filter: drop-shadow(0 4px 8px rgba(233,30,99,.35));
+}
+@keyframes floatUp {
+  from { transform: translateY(0) translateX(0) rotate(0deg); opacity: .95; }
+  to   { transform: translateY(-110vh) translateX(var(--dx)) rotate(360deg); opacity: 0; }
+}
+footer{ margin-top: 12px; font-size: 12px; opacity:.6; }
+
+
+
+.gift-img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 18px;
+  margin-top: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform .4s ease;
+}
+.gift-img:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+/*new add
+/* Hiệu ứng fade-in + zoom cho phần vế sau */
+#card-reveal {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.8s ease;
+}
+
+/* Khi card hiện ra */
+#card-reveal.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Ảnh bên trong có hiệu ứng xuất hiện dần */
+.gift-img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 18px;
+  margin-top: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* Animation ảnh hiện dần và bay nhẹ lên */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
